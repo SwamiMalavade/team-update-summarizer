@@ -35,6 +35,8 @@ import {
 import axios from "axios";
 import { styles } from "./styles";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 interface TeamUpdate {
   name: string;
   update: string;
@@ -118,7 +120,7 @@ const App: React.FC = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("/api/summary/generate", {
+      const response = await axios.post(`${API_URL}/api/summary/generate`, {
         updates: validUpdates,
       });
 
